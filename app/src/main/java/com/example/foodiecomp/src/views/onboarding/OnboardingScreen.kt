@@ -1,6 +1,5 @@
 package com.example.foodiecomp.src.views.onboarding
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.TextButton
 import androidx.compose.material3.Button
@@ -15,12 +14,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.foodiecomp.R
-import com.example.foodiecomp.src.components.SvgImageFromDrawable
+import com.example.foodiecomp.src.components.SvgImage
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.google.accompanist.pager.*
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import kotlinx.coroutines.launch
 
@@ -91,7 +88,7 @@ fun OnboardingPageUI(page: OnboardingPage) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        SvgImageFromDrawable(
+        SvgImage(
             assetName =  page.image!!,
             modifier = Modifier.size(300.dp),
         )

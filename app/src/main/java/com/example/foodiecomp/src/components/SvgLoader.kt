@@ -12,7 +12,7 @@ import coil.request.ImageRequest
 import coil.size.Size
 
 @Composable
-fun SvgImageFromDrawable(assetName: String, modifier: Modifier = Modifier) {
+fun SvgImage(assetName: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val imageLoader = ImageLoader.Builder(context)
         .components {
