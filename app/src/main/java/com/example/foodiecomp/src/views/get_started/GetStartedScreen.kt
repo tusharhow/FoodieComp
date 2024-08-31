@@ -13,12 +13,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.foodiecomp.src.components.PrimaryButton
 import com.example.foodiecomp.src.components.SvgImage
 import com.example.foodiecomp.src.components.TermsAndConditionAnnotedText
+import com.example.foodiecomp.src.navigation.Screen
 
 @Composable
-fun GetStartedScreen() {
+fun GetStartedScreen(navHostController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,9 +51,13 @@ fun GetStartedScreen() {
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
         )
         Spacer(modifier = Modifier.weight(1f))
-        PrimaryButton(title = "Create Account", onClick = { /*TODO*/ })
+        PrimaryButton(title = "Create Account", onClick = {
+            navHostController.navigate(Screen.RegisterScreen.route)
+        })
         Spacer(modifier = Modifier.height(16.dp))
-        PrimaryButton(title = "Login", onClick = { /*TODO*/ }, enabled = false)
+        PrimaryButton(title = "Login", onClick = {
+            navHostController.navigate(Screen.LoginScreen.route)
+        }, enabled = false)
         Spacer(modifier = Modifier.height(16.dp * 2))
         TermsAndConditionAnnotedText()
         Spacer(modifier = Modifier.height(16.dp * 2))

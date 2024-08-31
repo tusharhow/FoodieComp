@@ -23,7 +23,7 @@ import com.example.foodiecomp.ui.theme.PrimaryLightColor
         modifier = Modifier
             .fillMaxWidth()
             .height(50.dp)
-            .padding(horizontal = 16.dp * 3),
+            .padding(horizontal = 16.dp ),
         colors = ButtonDefaults.buttonColors(containerColor = if (enabled) PrimaryColor else PrimaryLightColor),
     ) {
         Text(text = title, style = TextStyle(
