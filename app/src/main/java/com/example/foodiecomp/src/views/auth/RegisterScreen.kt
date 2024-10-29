@@ -19,15 +19,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.foodiecomp.src.components.CustomTextField
 import com.example.foodiecomp.src.components.PrimaryButton
 import com.example.foodiecomp.src.components.SocialLoginButton
+import com.example.foodiecomp.src.navigation.Screen
 import com.example.foodiecomp.ui.theme.PrimaryColor
 import com.example.foodiecomp.ui.theme.PrimaryLightColor
 
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(navHostController: NavHostController) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -42,8 +44,7 @@ fun RegisterScreen() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
-                .padding(24.dp),
+                .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -96,7 +97,9 @@ fun RegisterScreen() {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-           PrimaryButton(title = "Register", onClick = { /*TODO*/ })
+           PrimaryButton(title = "Register", onClick = {
+               navHostController.navigate(Screen.LoginScreen.route)
+           })
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -115,9 +118,9 @@ fun RegisterScreen() {
             // Already have an account link
             Text(
                 text = "Already have an account? Login",
-                color = PrimaryColor, // Matching color with header
+                color = Color.Black, // Matching color with header
                 modifier = Modifier.clickable {
-                    // Handle navigation to login screen
+                    navHostController.navigate(Screen.LoginScreen.route)
                 },
                 textAlign = TextAlign.Center,
                 fontSize = 14.sp,
@@ -125,13 +128,4 @@ fun RegisterScreen() {
             )
         }
     }
-}
-
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun RegisterScreenPreview() {
-    RegisterScreen()
 }

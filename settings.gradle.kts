@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "FoodieComp"
 include(":app")
+include(":app")
+include(":dottedindicator")
+include(":app")

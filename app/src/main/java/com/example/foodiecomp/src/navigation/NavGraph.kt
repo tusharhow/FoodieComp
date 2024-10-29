@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.example.foodiecomp.src.views.auth.LoginScreen
 import com.example.foodiecomp.src.views.auth.RegisterScreen
 import com.example.foodiecomp.src.views.get_started.GetStartedScreen
+import com.example.foodiecomp.src.views.home.HomeScreen
 import com.example.foodiecomp.src.views.onboarding.OnboardingPage
 import com.example.foodiecomp.src.views.onboarding.OnboardingScreen
 
@@ -37,15 +38,18 @@ fun SetupNavGraph(navController: NavHostController) {
         }
           composable(route = Screen.GetStarted.route) {
             GetStartedScreen(
-                navHostController = navController
+              navController
             )
               }
             composable(route = Screen.LoginScreen.route) {
-                 LoginScreen()
+                 LoginScreen(navController)
             }
             composable(route = Screen.RegisterScreen.route) {
-               RegisterScreen()
+               RegisterScreen(navController)
             }
+        composable(route = Screen.HomeScreen.route) {
+            HomeScreen(navController)
+        }
         }
 
     }

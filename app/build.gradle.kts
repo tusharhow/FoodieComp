@@ -20,6 +20,8 @@ android {
         }
     }
 
+
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -70,4 +72,6 @@ dependencies {
     implementation ("com.google.accompanist:accompanist-pager-indicators:0.28.0")
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("io.coil-kt:coil-svg:2.6.0")
+    implementation ("com.google.accompanist:accompanist-pager:0.28.0")
+    implementation ("com.google.accompanist:accompanist-pager-indicators:0.28.0")
 }

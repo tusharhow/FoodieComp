@@ -16,13 +16,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavHostController
 import com.example.foodiecomp.src.components.CustomTextField
 import com.example.foodiecomp.src.components.PrimaryButton
+import com.example.foodiecomp.src.navigation.Screen
 import com.example.foodiecomp.ui.theme.PrimaryColor
 import com.example.foodiecomp.ui.theme.PrimaryLightColor
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navHostController: NavHostController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -35,8 +37,7 @@ fun LoginScreen() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
-                .padding(24.dp),
+                .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -75,7 +76,9 @@ fun LoginScreen() {
             Spacer(modifier = Modifier.height(24.dp))
 
             // Login Button
-            PrimaryButton(title = "Login", onClick = { /* Handle login logic */ })
+            PrimaryButton(title = "Login", onClick = {
+                navHostController.navigate(Screen.HomeScreen.route)
+            })
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -96,9 +99,9 @@ fun LoginScreen() {
             // Register Link
             Text(
                 text = "Don't have an account? Register",
-                color = PrimaryColor,
+                color = Color.Black,
                 modifier = Modifier.clickable {
-                    // Handle navigation to registration screen
+                    navHostController.navigate(Screen.RegisterScreen.route)
                 },
                 textAlign = TextAlign.Center,
                 fontSize = 14.sp,
@@ -106,12 +109,4 @@ fun LoginScreen() {
             )
         }
     }
-}
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen()
 }
