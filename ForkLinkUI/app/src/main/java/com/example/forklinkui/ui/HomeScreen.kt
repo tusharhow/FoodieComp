@@ -33,7 +33,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.navigation.NavHostController
 import com.example.forklinkui.components.TopHeader
+import com.example.forklinkui.ui.battery.BatteryChargingScreen
+import com.example.forklinkui.ui.connectivity.ConnectivityScreen
 import com.example.forklinkui.ui.job.JobCompletionReport
+import com.example.forklinkui.ui.launch.LaunchScreen
 import com.example.forklinkui.ui.maintenance.MaintenanceScreen
 import com.example.forklinkui.ui.menu.TechnicianMenuComponent
 import com.example.forklinkui.ui.service_report.ServiceReportScreen
@@ -46,13 +49,12 @@ fun HomeScreen(navController: NavHostController) {
     val menuItemsViewModel = remember { MenuItemsViewModel() }
     val showReportView = remember { mutableStateOf(false) }
 
-
     Column(modifier = Modifier.fillMaxSize()) {
         TopHeader(
             onBackClick = { /* Handle back click */ },
             onPowerClick = { /* Handle power click */ },
             onHomeClick = {
-                menuItemsViewModel.setClickedItemIndex(4) // Set to a new index for ReportView
+                menuItemsViewModel.setClickedItemIndex(4)
             },
             currentTime = "9:12 PM",
             batteryPercent = 85,
@@ -62,31 +64,40 @@ fun HomeScreen(navController: NavHostController) {
             isWifiActive = true
         )
 
+        // Temporarily comment out Row with sidebar and show ConnectivityScreen directly
+        /* Original Row with sidebar
         Row(modifier = Modifier.weight(1f)) {
-            // Left Sidebar
             Column(
                 modifier = Modifier
                     .width(110.dp)
                     .height(480.dp)
-                    .background(
-                        Color(0xFFd0ddf1)
-                    )
+                    .background(Color(0xFFd0ddf1))
                     .clip(RoundedCornerShape(10.dp))
                     .padding(top = 10.dp, bottom = 10.dp, start = 10.dp, end = 10.dp)
             ) {
                 TechnicianMenuComponent(menuItemsViewModel)
             }
 
-            // Main Content
             Box(modifier = Modifier
                 .weight(1f)
-                .background(
-                    Color(0xFFd0ddf1)
-                )
+                .background(Color(0xFFd0ddf1))
                 .padding(top = 10.dp, bottom = 10.dp, end = 10.dp)
             ) {
                 HomeScreenContent(navController, menuItemsViewModel)
             }
+        }
+        */
+        
+        // Temporary direct ConnectivityScreen
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .background(Color(0xFFd0ddf1))
+                .padding(10.dp)
+        ) {
+      //  BatteryChargingScreen()
+   ConnectivityScreen()
+//            LaunchScreen()
         }
     }
 }
@@ -115,7 +126,9 @@ fun HomeScreenContent(navController: NavHostController, menuItemsViewModel: Menu
             4 -> ReportView(
                 onBack = { menuItemsViewModel.setClickedItemIndex(-1) }
             )
-            else -> DefaultDashboardView()
+//            else -> DefaultDashboardView()
+//            else -> LaunchScreen()
+             else -> ConnectivityScreen()
         }
 
     }
